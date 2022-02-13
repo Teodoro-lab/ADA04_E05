@@ -12,6 +12,16 @@ public class LinkList<T> {
         return (first==null);
     }
 
+    public void displayList() {
+        System.out.print("List (first--> ");
+        Link<T> current = this.first;
+        while(current != null) {
+            current.displayLink(); 
+            current = current.getNext();
+        }
+        System.out.println("<--last)");
+    }
+
     public void insertFirst(T dd) { 
         Link<T> newLink = new Link<>(dd);
         newLink.setNext(this.first);
@@ -48,7 +58,6 @@ public class LinkList<T> {
         return aux.getData();
     }
 
-    //my method  
     public void insertLast(T dd) { 
         Link<T> newLink = new Link<>(dd);
 	    Link<T> aux = first;
@@ -84,7 +93,12 @@ public class LinkList<T> {
         listLength--;
     }
     
-    
+    /* 
+     * FIXME 
+     * check the Tests
+     *
+     * DONT FORGET TO DELETE THIS ANNOTATION AFTER FIXING
+     * **/ 
     public void insertAfter(T lookedObj, T obj){
         if (isEmpty())
             return; 
@@ -139,16 +153,6 @@ public class LinkList<T> {
             listLength++;
         }
     }
-
-    public void displayList() {
-        System.out.print("List (first--> ");
-        Link<T> current = this.first;
-        while(current != null) {
-            current.displayLink(); 
-            current = current.getNext();
-        }
-        System.out.println("<--last)");
-    }
     
     public void clear(){
         first = null;
@@ -165,7 +169,6 @@ public class LinkList<T> {
             aux = aux.getNext();
             i++;
         }
-
         return -1;
     }
 
@@ -199,5 +202,4 @@ public class LinkList<T> {
         }
         return false;
     }
-
 }
