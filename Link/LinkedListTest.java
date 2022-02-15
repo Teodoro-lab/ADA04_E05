@@ -84,6 +84,8 @@ class LinkedListTest {
         
         //checkClear();
 
+        checkDelete();
+
         //checkFindIndex();
         
         //checkReplace();
@@ -124,6 +126,32 @@ class LinkedListTest {
         lista.displayList();
     }
 
+    public static void checkDelete(){
+        System.out.println("checking delete with index");
+
+        LinkList<Person> lista = new LinkList<>();
+
+        lista.insertFirst(teo);
+        lista.insertFirst(juan);
+        lista.insertFirst(ana);
+        lista.displayList();
+
+        lista.delete(3);
+        lista.displayList();
+
+        lista.delete(5);
+        lista.displayList();
+
+        lista.delete(-3);
+        lista.displayList();
+
+        lista.delete(1);
+        lista.displayList();
+        
+        lista.delete(0);
+        lista.displayList();
+    }
+
     public static void checkInsertBefore(){
         System.out.println("checking insertBefore");
 
@@ -151,7 +179,6 @@ class LinkedListTest {
         System.out.println(lista.findIndex(juan));
         System.out.println(lista.findIndex(ana));
         System.out.println(lista.findIndex(soto));
-
    }
 
    public static void checkClear(){

@@ -172,6 +172,42 @@ public class LinkList<T> {
         return -1;
     }
 
+    public long length(){
+        return listLength;
+    }
+
+    public void delete(long index){
+        
+        if(index > listLength - 1 || index < 0)
+            return;
+        
+        Link<T> aux = first;
+
+        if (index == 0){    
+            first = aux.getNext();
+            return;
+        }
+        
+        long i = 1;
+        Link<T> prevNode = first;
+
+        while(i <= index){
+            prevNode = aux;
+            aux = prevNode.getNext();
+            i++;
+        }
+        
+        prevNode.setNext(aux.getNext());
+        
+    }
+
+    /**
+     * Returns boolean value, true if the replace was succesful, false
+     * otherwise
+     * @param index
+     * @param obj
+     * @return boolean value
+     */
     public boolean replace(long index, T obj){
         if(isEmpty())
             return false;

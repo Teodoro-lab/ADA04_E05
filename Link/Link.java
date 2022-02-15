@@ -9,7 +9,7 @@ public class Link<T> {
         next = null;
     }
 
-    public void displayLink() {
+    public void displayLink() {        
         System.out.print("{" + dData + "} ");
     }
 
