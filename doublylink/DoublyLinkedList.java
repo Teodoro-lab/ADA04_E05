@@ -1,9 +1,9 @@
 package doublylink;
 
-public class DoublyLinkedList {
+public class DoublyLinkedList<T> {
 
-    private DoublyLink first; 
-    private DoublyLink last; 
+    private DoublyLink<T> first; 
+    private DoublyLink<T> last; 
     
     public DoublyLinkedList() {
         first = null; 
@@ -15,7 +15,7 @@ public class DoublyLinkedList {
     }
     
     public void insertFirst(long dd){
-        DoublyLink newLink = new DoublyLink(dd); 
+        DoublyLink<T> newLink = new DoublyLink<T>(dd); 
         if( isEmpty() ) 
             last = newLink; 
         else
@@ -25,7 +25,7 @@ public class DoublyLinkedList {
     }
 
     public void insertLast(long dd) {
-        DoublyLink newLink = new DoublyLink(dd); 
+        DoublyLink<T> newLink = new DoublyLink<T>(dd); 
         if( isEmpty() ) 
             first = newLink; 
         else {
@@ -35,8 +35,8 @@ public class DoublyLinkedList {
         last = newLink; 
     }
 
-    public DoublyLink deleteFirst() { 
-        DoublyLink temp = first;
+    public DoublyLink<T> deleteFirst() { 
+        DoublyLink<T> temp = first;
         if(first.next == null) 
             last = null;
         else
@@ -45,7 +45,7 @@ public class DoublyLinkedList {
         return temp;
     }
 
-    public DoublyLink deleteLast(){
+    public DoublyLink<T> deleteLast(){
         DoublyLink temp = last;
         if(first.next == null) 
             first = null; 

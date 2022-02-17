@@ -176,6 +176,26 @@ public class LinkList<T> {
         return listLength;
     }
 
+    public boolean insertInOrder(T obj, boolean ascendant){
+        Link<T> aux = first;
+
+
+        /*HAY UN PROBLEMA CON EL COMPARTE TO PARA GENERICOS, NO OLVIDES METERLE
+        EL CODIGO PARA HACER LA INSERCIÓN, SE PUEDE UTILIZAR UN METODO DE INSERT AFTER
+        */
+        while(aux != null){
+            if (ascendant){
+                if (aux.getData()(obj)){
+
+                }
+            } else ´{
+
+            }
+            aux = aux.getNext();
+        }
+        return true;
+    }
+
     public void delete(long index){
         
         if(index > listLength - 1 || index < 0)
