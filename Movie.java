@@ -20,7 +20,7 @@ public class Movie {
     private String movieIMDBLink;
 
     public Movie(UUID id, String title, TimeUnit duration, boolean color, String country, String language,
-            String contentRating, long budget, Year titleYear, float iMDBScore) {
+            String contentRating, long budget, Year titleYear, float IMDBScore) {
         this.id = id;
         this.title = title;
         this.duration = duration;
@@ -30,7 +30,53 @@ public class Movie {
         this.contentRating = contentRating;
         this.budget = budget;
         this.titleYear = titleYear;
-        IMDBScore = iMDBScore;
+        this.IMDBScore = IMDBScore;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (int) (budget ^ (budget >>> 32));
+        result = prime * result + (color ? 1231 : 1237);
+        result = prime * result + ((duration == null) ? 0 : duration.hashCode());
+        result = prime * result + ((language == null) ? 0 : language.hashCode());
+        result = prime * result + ((title == null) ? 0 : title.hashCode());
+        result = prime * result + ((titleYear == null) ? 0 : titleYear.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Movie other = (Movie) obj;
+        if (budget != other.budget)
+            return false;
+        if (color != other.color)
+            return false;
+        if (duration != other.duration)
+            return false;
+        if (language == null) {
+            if (other.language != null)
+                return false;
+        } else if (!language.equals(other.language))
+            return false;
+        if (title == null) {
+            if (other.title != null)
+                return false;
+        } else if (!title.equals(other.title))
+            return false;
+        if (titleYear == null) {
+            if (other.titleYear != null)
+                return false;
+        } else if (!titleYear.equals(other.titleYear))
+            return false;
+        return true;
     }
 
     public UUID getId() {

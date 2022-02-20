@@ -1,6 +1,6 @@
 package Link;
 
-public class LinkList<T> {
+public class LinkList<T extends Comparable> {
     private Link<T> first;
     private long listLength = 0;
     
@@ -69,6 +69,10 @@ public class LinkList<T> {
 	    }
 	    aux.setNext(newLink);
         listLength++;
+    }
+
+    public long getLength(){
+        return listLength;
     }
 
 
@@ -176,33 +180,28 @@ public class LinkList<T> {
         return listLength;
     }
 
-    public boolean insertInOrder(T obj, boolean ascendant){
+    public void insertInOrder(T obj, boolean ascendant){
         Link<T> aux = first;
 
-
-        /*HAY UN PROBLEMA CON EL COMPARTE TO PARA GENERICOS, NO OLVIDES METERLE
-        EL CODIGO PARA HACER LA INSERCIÓN, SE PUEDE UTILIZAR UN METODO DE INSERT AFTER
-        */
         while(aux != null){
             if (ascendant){
-                if (aux.getData()(obj)){
-
+                if (obj.compareTo(aux) > 0) {
+                    insertAfter(obj, aux.getData());
                 }
-            } else ´{
-
+            } else{
+                 if (obj.compareTo(aux) < -1){
+                     insertBefore(obj, aux.getData());
+                 }   
             }
             aux = aux.getNext();
         }
-        return true;
     }
 
     public void delete(long index){
-        
         if(index > listLength - 1 || index < 0)
             return;
         
         Link<T> aux = first;
-
         if (index == 0){    
             first = aux.getNext();
             return;
@@ -210,7 +209,6 @@ public class LinkList<T> {
         
         long i = 1;
         Link<T> prevNode = first;
-
         while(i <= index){
             prevNode = aux;
             aux = prevNode.getNext();
@@ -218,7 +216,6 @@ public class LinkList<T> {
         }
         
         prevNode.setNext(aux.getNext());
-        
     }
 
     /**
