@@ -80,10 +80,10 @@ class LinkedListTest {
         // checkGetFirstGetLast();
 
         // punto 2
-        //checkGetlength();
+        // checkGetlength();
 
         // punto 3
-        //checkInsertAfter();
+        // checkInsertAfter();
 
         // punto 4
         // checkInsertBefore();
@@ -92,7 +92,7 @@ class LinkedListTest {
         // checkInsertInOrder();
 
         // punto 6
-         checkDeleteByData();
+        checkDeleteByData();
 
         // punto 7
         // checkDelete();
@@ -127,7 +127,7 @@ class LinkedListTest {
         lista.insertFirst(juan);
         lista.insertFirst(ana);
 
-        System.out.println(lista.getLength());
+        System.out.println(lista.length());
 
     }
 
@@ -206,7 +206,7 @@ class LinkedListTest {
         lista.displayList();
     }
 
-    public static void checkDeleteByData(){
+    public static void checkDeleteByData() {
         System.out.println("checking delete with index");
         LinkList<Person> lista = new LinkList<>();
 

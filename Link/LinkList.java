@@ -39,49 +39,6 @@ public class LinkList<T extends Comparable<T>> {
         return temp;
     }
 
-    public boolean deleteByData(T data){
-        if (isEmpty()){
-            return false;
-        }
-
-        if (first.getData().equals(data)){
-            first = first.getNext();
-            return true;
-        }
-
-        Link<T> aux = first.getNext();
-        Link<T> beforeObj = first;
-        while (aux != null) {
-            if (aux.getData().equals(data)){
-                beforeObj.setNext(aux.getNext());
-                return true;
-            }
-            beforeObj = aux;
-            aux = beforeObj.getNext();
-        }
-        
-        return false;
-    }
-
-    public T getFirst() {
-        if (isEmpty()) {
-            return null;
-        }
-        return first.getData();
-    }
-
-    public T getLast() {
-        if (isEmpty())
-            return null;
-
-        Link<T> aux = first;
-        while (aux.getNext() != null) {
-            aux = aux.getNext();
-        }
-
-        return aux.getData();
-    }
-
     public void insertLast(T dd) {
         Link<T> newLink = new Link<>(dd);
         Link<T> aux = first;
@@ -93,10 +50,6 @@ public class LinkList<T extends Comparable<T>> {
         }
         aux.setNext(newLink);
         listLength++;
-    }
-
-    public long getLength() {
-        return listLength;
     }
 
     public void deleteLast() {
@@ -118,6 +71,31 @@ public class LinkList<T extends Comparable<T>> {
 
         aux.setNext(null);
         listLength--;
+    }
+
+    /* Aquí comienzan los métodos solicitados en el ADA */
+
+    public T getFirst() {
+        if (isEmpty()) {
+            return null;
+        }
+        return first.getData();
+    }
+
+    public T getLast() {
+        if (isEmpty())
+            return null;
+
+        Link<T> aux = first;
+        while (aux.getNext() != null) {
+            aux = aux.getNext();
+        }
+
+        return aux.getData();
+    }
+
+    public long length() {
+        return listLength;
     }
 
     public void insertAfter(T lookedObj, T obj) {
@@ -176,28 +154,6 @@ public class LinkList<T extends Comparable<T>> {
         }
     }
 
-    public void clear() {
-        first = null;
-        listLength = 0;
-    }
-
-    public long findIndex(T obj) {
-        Link<T> aux = first;
-
-        long i = 0;
-        while (aux != null) {
-            if (aux.getData().equals(obj))
-                return i;
-            aux = aux.getNext();
-            i++;
-        }
-        return -1;
-    }
-
-    public long length() {
-        return listLength;
-    }
-
     public void insertInOrder(T obj, boolean ascendant) {
         if (isEmpty()) {
             insertFirst(obj);
@@ -222,6 +178,30 @@ public class LinkList<T extends Comparable<T>> {
         }
     }
 
+    public boolean deleteByData(T data) {
+        if (isEmpty()) {
+            return false;
+        }
+
+        if (first.getData().equals(data)) {
+            first = first.getNext();
+            return true;
+        }
+
+        Link<T> aux = first.getNext();
+        Link<T> beforeObj = first;
+        while (aux != null) {
+            if (aux.getData().equals(data)) {
+                beforeObj.setNext(aux.getNext());
+                return true;
+            }
+            beforeObj = aux;
+            aux = beforeObj.getNext();
+        }
+
+        return false;
+    }
+
     public void deleteByIndex(long index) {
         if (index > listLength - 1 || index < 0)
             return;
@@ -241,6 +221,24 @@ public class LinkList<T extends Comparable<T>> {
         }
 
         prevNode.setNext(aux.getNext());
+    }
+
+    public void clear() {
+        first = null;
+        listLength = 0;
+    }
+
+    public long findIndex(T obj) {
+        Link<T> aux = first;
+
+        long i = 0;
+        while (aux != null) {
+            if (aux.getData().equals(obj))
+                return i;
+            aux = aux.getNext();
+            i++;
+        }
+        return -1;
     }
 
     /**
