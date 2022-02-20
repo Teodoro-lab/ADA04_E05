@@ -31,7 +31,7 @@ class Person implements Comparable<Person> {
 
     @Override
     public String toString() {
-        return "" + getName();
+        return "" + getName() + ":" + getAge() + "";
     }
 
     @Override
@@ -74,32 +74,25 @@ class LinkedListTest {
     public static Person soto = new Person("soto", 27);
     public static Person juan = new Person("Juan", 32);
 
-    /**
-     * TODO
-     *
-     * returnElement()
-     * insertInOrder(ascendant = true/false)
-     * deleteObject()
-     *
-     */
     public static void main(String[] args) {
 
         // punto 1
         // checkGetFirstGetLast();
 
         // punto 2
-        checkGetlength();
+        //checkGetlength();
 
         // punto 3
-        // checkInsertAfter();
+        //checkInsertAfter();
 
         // punto 4
         // checkInsertBefore();
 
         // punto 5
-        checkInsertInOrder();
+        // checkInsertInOrder();
 
         // punto 6
+         checkDeleteByData();
 
         // punto 7
         // checkDelete();
@@ -138,13 +131,6 @@ class LinkedListTest {
 
     }
 
-    /**
-     * lista.displayList(); * FIXME
-     * After the insertion of a node, the following nodes of that
-     * node dissapear, check the corresponding function, please :)
-     *
-     * DONT FORGET TO DELETE THIS ANNOTATION AFTER FIXING
-     */
     public static void checkInsertAfter() {
         System.out.println("checking insertAfter");
         LinkList<Person> lista = new LinkList<>();
@@ -155,6 +141,8 @@ class LinkedListTest {
         lista.displayList();
 
         lista.insertAfter(teo, soto);
+        lista.displayList();
+
         lista.insertAfter(ana, luis);
         lista.displayList();
     }
@@ -178,11 +166,18 @@ class LinkedListTest {
         LinkList<Person> lista = new LinkList<>();
 
         lista.insertFirst(teo);
-        lista.insertInOrder(juan, true);
-        lista.insertInOrder(ana, true);
-        lista.insertInOrder(soto, false);
-        lista.insertInOrder(luis, false);
+        lista.displayList();
 
+        lista.insertInOrder(juan, false);
+        lista.displayList();
+
+        lista.insertInOrder(ana, false);
+        lista.displayList();
+
+        lista.insertInOrder(soto, false);
+        lista.displayList();
+
+        lista.insertInOrder(luis, false);
         lista.displayList();
     }
 
@@ -195,19 +190,46 @@ class LinkedListTest {
         lista.insertFirst(ana);
         lista.displayList();
 
-        lista.delete(3);
+        lista.deleteByIndex(3);
         lista.displayList();
 
-        lista.delete(5);
+        lista.deleteByIndex(5);
         lista.displayList();
 
-        lista.delete(-3);
+        lista.deleteByIndex(-3);
         lista.displayList();
 
-        lista.delete(1);
+        lista.deleteByIndex(1);
         lista.displayList();
 
-        lista.delete(0);
+        lista.deleteByIndex(0);
+        lista.displayList();
+    }
+
+    public static void checkDeleteByData(){
+        System.out.println("checking delete with index");
+        LinkList<Person> lista = new LinkList<>();
+
+        lista.insertFirst(teo);
+        lista.insertFirst(juan);
+        lista.insertFirst(ana);
+        lista.insertFirst(soto);
+        lista.insertFirst(luis);
+        lista.displayList();
+
+        lista.deleteByData(soto);
+        lista.displayList();
+
+        lista.deleteByData(teo);
+        lista.displayList();
+
+        lista.deleteByData(ana);
+        lista.displayList();
+
+        lista.deleteByData(juan);
+        lista.displayList();
+
+        lista.deleteByData(luis);
         lista.displayList();
     }
 
