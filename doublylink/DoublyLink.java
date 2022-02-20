@@ -1,3 +1,5 @@
+package doublylink;
+
 public class DoublyLink<T> {
     public T dData;
     public DoublyLink<T> next;
