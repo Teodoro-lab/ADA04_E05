@@ -24,7 +24,7 @@ public class CSVWrite {
                     continue;
                 }
                 Movie movie = movies.deleteFirst();
-                fw.write(movie.toString());
+                fw.write(movie.toString() + "\n");
             }
             fw.close();
 
