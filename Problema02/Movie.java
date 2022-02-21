@@ -1,3 +1,5 @@
+package Problema02;
+
 import java.time.Year;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -6,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * Movie
  */
 public class Movie {
-    private UUID id; 
+    private int id; 
     private String title;
     private TimeUnit duration;
     private boolean color;
@@ -19,7 +21,7 @@ public class Movie {
     private float aspectRatio;
     private String movieIMDBLink;
 
-    public Movie(UUID id, String title, TimeUnit duration, boolean color, String country, String language,
+    public Movie(int id, String title, TimeUnit duration, boolean color, String country, String language,
             String contentRating, long budget, Year titleYear, float IMDBScore) {
         this.id = id;
         this.title = title;
@@ -31,19 +33,6 @@ public class Movie {
         this.budget = budget;
         this.titleYear = titleYear;
         this.IMDBScore = IMDBScore;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (int) (budget ^ (budget >>> 32));
-        result = prime * result + (color ? 1231 : 1237);
-        result = prime * result + ((duration == null) ? 0 : duration.hashCode());
-        result = prime * result + ((language == null) ? 0 : language.hashCode());
-        result = prime * result + ((title == null) ? 0 : title.hashCode());
-        result = prime * result + ((titleYear == null) ? 0 : titleYear.hashCode());
-        return result;
     }
 
     @Override
@@ -79,7 +68,7 @@ public class Movie {
         return true;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 

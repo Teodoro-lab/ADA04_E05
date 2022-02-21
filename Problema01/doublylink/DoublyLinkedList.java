@@ -1,4 +1,4 @@
-package doublylink;
+package Problema01.doublylink;
 public class DoublyLinkedList<T extends Comparable<T>> {
     private DoublyLink<T> first;
     private DoublyLink<T> last;

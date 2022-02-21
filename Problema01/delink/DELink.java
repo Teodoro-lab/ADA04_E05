@@ -1,14 +1,10 @@
-package delink;
+package Problema01.delink;
 
-public class DELink {
-    public double dData;
-    public DELink next; 
+import Problema01.Link.Link;
+public class DELink<T> extends Link<T>{
+    public T dData;
 
-    public DELink(double dd) {
-        dData = dd;
-    }
-
-    public void displayLink() {
-        System.out.print("{" + dData + "} ");
+    public DELink(T dd) {
+        super(dd);
     }
 }

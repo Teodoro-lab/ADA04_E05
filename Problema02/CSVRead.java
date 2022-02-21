@@ -1,9 +1,12 @@
+package Problema02;
 
 import com.opencsv.*;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.io.File;
+
+import Problema01.Link.LinkList;
 
 public class CSVRead {
     private FileReader archCSV;
@@ -32,7 +35,7 @@ public class CSVRead {
         FileSize();
         try {
             // Leo el archivo con el separador estándar ","
-            archCSV = new FileReader("Movie.csv");
+            archCSV = new FileReader("Problema02/Movie.csv");
             csvReader = new CSVReader(archCSV);
 
             String[] fila = null;
@@ -51,6 +54,8 @@ public class CSVRead {
                         + " |  " + fila[11]);
                 moviesList.add(fila);
             }
+
+            
 
         }
 

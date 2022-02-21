@@ -1,4 +1,4 @@
-package doublylink;
+package Problema01.doublylink;
 
 public class DoublyLink<T> {
     public T dData;

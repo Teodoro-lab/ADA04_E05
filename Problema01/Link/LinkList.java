@@ -1,7 +1,7 @@
-package Link;
+package Problema01.Link;
 
 public class LinkList<T extends Comparable<T>> {
-    private Link<T> first;
+    protected Link<T> first;
     private long listLength = 0;
 
     public LinkList() {

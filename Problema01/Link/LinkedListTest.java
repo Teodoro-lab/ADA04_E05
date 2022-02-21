@@ -1,4 +1,4 @@
-package Link;
+package Problema01.Link;
 
 /**
  * Esta solo es una clase de prueba , se utiliza en los métodos de

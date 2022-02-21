@@ -1,4 +1,4 @@
-package doublylink;
+package Problema01.doublylink;
 public class DoublyLinkedTest {
     public static void main(String[] args) {
         DoublyLinkedList<Integer> theList = new DoublyLinkedList<>();

@@ -1,52 +1,25 @@
-package delink;
+package Problema01.delink;
 
-class DELinkList {
-    private DELink first;
-    private DELink last; 
-    
+import Problema01.Link.LinkList;
+import Problema01.Link.Link;
+
+class DELinkList<T extends Comparable<T>> extends LinkList<T> {
+    private Link<T> last;
+
     public DELinkList() {
-        first = null;
+        super();
         last = null;
     }
 
-    public boolean isEmpty() {
-        return (first==null);
-    }
-
-    public void insertFirst(double dd) { 
-        DELink newLink = new DELink(dd);
-        if(isEmpty())
-            last = newLink;
-        newLink.next = first; 
-        first = newLink;
-    }
-
-    public void insertLast(double dd) { 
-        DELink newLink = new DELink(dd);
-        if(isEmpty())
+    @Override
+    public void insertLast(T dd) {
+        Link<T> newLink = new DELink<>(dd);
+        if (isEmpty())
             first = newLink;
-        else
-            last.next = newLink;     
+        else {
+            Link<T> aux = last.getNext();
+            aux = newLink;
+        }
         last = newLink;
     }
-
-
-    public double deleteFirst() {
-        double temp = first.dData;
-        if(first.next == null)
-            last = null;
-        first = first.next;
-        return temp;    
-    }
-
-    public void displayList() {
-        System.out.print("List (first--> ");
-        DELink current = first;
-        while(current != null) {
-            current.displayLink(); 
-            current = current.next; 
-        }
-        System.out.println("<--last)");
-    }
-
 }
