@@ -1,6 +1,5 @@
 package Problema01.Link;
-
-public class LinkList<T extends Comparable<T>> {
+public class LinkList<T extends Comparable<T>>{
     protected Link<T> first;
     private long listLength = 0;
 
@@ -29,14 +28,14 @@ public class LinkList<T extends Comparable<T>> {
         listLength++;
     }
 
-    public Link<T> deleteFirst() {
+    public T deleteFirst() {
         Link<T> temp = null;
         if (!isEmpty()) {
             temp = this.first;
             first = first.getNext();
         }
         listLength--;
-        return temp;
+        return temp.getData();
     }
 
     public void insertLast(T dd) {
@@ -52,25 +51,27 @@ public class LinkList<T extends Comparable<T>> {
         listLength++;
     }
 
-    public void deleteLast() {
+    public T deleteLast() {
         Link<T> aux = first;
 
         if (isEmpty()) {
-            return;
+            return null;
         }
 
         if (aux.getNext() == null) {
+            Link<T> save = aux;
             aux = null;
-            return;
+            return save.getData();
         }
 
         while (aux.getNext().getNext() != null) {
             aux = aux.getNext();
-            aux.displayLink();
         }
 
+        Link<T> save = aux;
         aux.setNext(null);
         listLength--;
+        return save.getData();
     }
 
     /* Aquí comienzan los métodos solicitados en el ADA */

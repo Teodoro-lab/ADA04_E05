@@ -7,19 +7,20 @@ import java.util.ArrayList;
 import java.io.File;
 
 import Problema01.Link.LinkList;
+import Problema02.Movie;
 
 public class CSVRead {
     private FileReader archCSV;
     private CSVReader csvReader;
-    private ArrayList<String[]> moviesList;
+    private LinkList<Movie> moviesList;
 
     public CSVRead() {
         this.archCSV = null;
         this.csvReader = null;
-        this.moviesList = new ArrayList<String[]>();
+        this.moviesList = new LinkList<Movie>();
     }
 
-    public ArrayList<String[]> getMoviesList() {
+    public LinkList<Movie> getMoviesList() {
         return moviesList;
     }
 
@@ -27,36 +28,44 @@ public class CSVRead {
         File archivo = new File("Movie.csv");
         long bytes = archivo.length();
         if (bytes == 0) {
-            System.out.println("No se pueden capturar las calificaciones ya que el archivo esta vacio ");
+            System.out.println("El archivo esta vacio");
         }
     }
 
-    public void Read_Save_Exceptions() {
-        FileSize();
+    public void Read_Save(int maxSize) {
         try {
             // Leo el archivo con el separador estándar ","
             archCSV = new FileReader("Problema02/Movie.csv");
             csvReader = new CSVReader(archCSV);
 
             String[] fila = null;
+            int index = 0;
+            boolean first = true;
             while ((fila = csvReader.readNext()) != null) {
-                System.out.println(fila[0]
-                        + " |  " + fila[1]
-                        + " |  " + fila[2]
-                        + " |  " + fila[3]
-                        + " |  " + fila[4]
-                        + " |  " + fila[5]
-                        + " |  " + fila[6]
-                        + " |  " + fila[7]
-                        + " |  " + fila[8]
-                        + " |  " + fila[9]
-                        + " |  " + fila[10]
-                        + " |  " + fila[11]);
-                moviesList.add(fila);
+                if (first) {
+                    first = false;
+                    continue;
+                }
+
+                if (index >= maxSize)
+                    break;
+                index++;
+
+                Movie movie = new Movie(
+                        Integer.parseInt(fila[0])
+                        , fila[1]
+                        , fila[2]
+                        , fila[3]
+                        , fila[4]
+                        , fila[5]
+                        , fila[6]
+                        , fila[7]
+                        , Integer.parseInt(fila[8])
+                        , fila[9]
+                        , fila[10]
+                        , fila[11]);
+                moviesList.insertFirst(movie);
             }
-
-            
-
         }
 
         catch (FileNotFoundException e) {
@@ -68,7 +77,7 @@ public class CSVRead {
                     "No se pueden capturar las calificaciones ya que el archivo no tiene las columnas esperadas");
             System.out.println(e);
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getStackTrace());
         } finally {
             try {
                 archCSV.close();

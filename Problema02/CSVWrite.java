@@ -3,23 +3,34 @@ package Problema02;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileWriter;
-import java.util.Scanner;
+
+import Problema01.Link.LinkList;
 
 public class CSVWrite {
 
-    private ArrayList<String[]> moviesFinalList;
-    private File file = new File("MovieFinal.csv");
+    // private LinkList<Movie> moviesFinalList;
+    private File file = new File("Problema02/MovieFinal.csv");
 
-    public void Movies(ArrayList<String[]> movies) {
+    public void printMovies(LinkList<Movie> movies) {
         try {
             FileWriter fw = new FileWriter(file);
             fw.write(
                     "movie_id, movie_title, duration, color, language, country, content_rating, budget, title_year, imdb_score, aspect_ratio, movie_imdb_link\n");
 
-        } catch (
+            boolean first = true;
+            while (!movies.isEmpty()) {
+                if (first) {
+                    first = false;
+                    continue;
+                }
+                Movie movie = movies.deleteFirst();
+                fw.write(movie.toString());
+            }
+            fw.close();
 
-        Exception e) {
-        }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } 
     }
 
 }

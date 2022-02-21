@@ -1,28 +1,27 @@
 package Problema02;
 
-import java.time.Year;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Movie
  */
-public class Movie {
+public class Movie implements Comparable<Movie> {
     private int id; 
     private String title;
-    private TimeUnit duration;
-    private boolean color;
+    private String duration;
+    private String color;
     private String country;
     private String language;
     private String contentRating;
-    private long budget;
-    private Year titleYear;
-    private float IMDBScore;
-    private float aspectRatio;
+    private String budget;
+    private int titleYear;
+    private String IMDBScore;
+    private String aspectRatio;
     private String movieIMDBLink;
 
-    public Movie(int id, String title, TimeUnit duration, boolean color, String country, String language,
-            String contentRating, long budget, Year titleYear, float IMDBScore) {
+    public Movie(int id, String title, String duration, String color, String country, String language,
+            String contentRating, String budget, int titleYear, String iMDBScore, String aspectRatio,
+            String movieIMDBLink) {
         this.id = id;
         this.title = title;
         this.duration = duration;
@@ -32,7 +31,17 @@ public class Movie {
         this.contentRating = contentRating;
         this.budget = budget;
         this.titleYear = titleYear;
-        this.IMDBScore = IMDBScore;
+        IMDBScore = iMDBScore;
+        this.aspectRatio = aspectRatio;
+        this.movieIMDBLink = movieIMDBLink;
+    }
+
+    @Override
+    public String toString() {
+        return "" + IMDBScore + "," + aspectRatio + "," + budget + ","
+                + color + "," + contentRating + "," + country + "," + duration
+                + "," + id + "," + language + "," + movieIMDBLink + "," + title
+                + "," + titleYear;
     }
 
     @Override
@@ -44,11 +53,25 @@ public class Movie {
         if (getClass() != obj.getClass())
             return false;
         Movie other = (Movie) obj;
-        if (budget != other.budget)
+        if (budget == null) {
+            if (other.budget != null)
+                return false;
+        } else if (!budget.equals(other.budget))
             return false;
-        if (color != other.color)
+        if (color == null) {
+            if (other.color != null)
+                return false;
+        } else if (!color.equals(other.color))
             return false;
-        if (duration != other.duration)
+        if (country == null) {
+            if (other.country != null)
+                return false;
+        } else if (!country.equals(other.country))
+            return false;
+        if (duration == null) {
+            if (other.duration != null)
+                return false;
+        } else if (!duration.equals(other.duration))
             return false;
         if (language == null) {
             if (other.language != null)
@@ -60,32 +83,50 @@ public class Movie {
                 return false;
         } else if (!title.equals(other.title))
             return false;
-        if (titleYear == null) {
-            if (other.titleYear != null)
-                return false;
-        } else if (!titleYear.equals(other.titleYear))
+        if (titleYear != other.titleYear)
             return false;
         return true;
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public int compareTo(Movie o) {
+        if (o.getTitleYear() > this.getTitleYear())
+            return -1;
+        else if (o.getTitleYear() == this.getTitleYear())
+            return 0;
+        return -1;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public TimeUnit getDuration() {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDuration() {
         return duration;
     }
 
-    public boolean getColor(){
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getColor() {
         return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getCountry() {
         return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getLanguage() {
@@ -104,35 +145,35 @@ public class Movie {
         this.contentRating = contentRating;
     }
 
-    public long getBudget() {
+    public String getBudget() {
         return budget;
     }
 
-    public void setBudget(long budget) {
+    public void setBudget(String budget) {
         this.budget = budget;
     }
 
-    public Year getTitleYear() {
+    public int getTitleYear() {
         return titleYear;
     }
 
-    public void setTitleYear(Year titleYear) {
+    public void setTitleYear(int titleYear) {
         this.titleYear = titleYear;
     }
 
-    public float getIMDBScore() {
+    public String getIMDBScore() {
         return IMDBScore;
     }
 
-    public void setIMDBScore(float iMDBScore) {
+    public void setIMDBScore(String iMDBScore) {
         IMDBScore = iMDBScore;
     }
 
-    public float getAspectRatio() {
+    public String getAspectRatio() {
         return aspectRatio;
     }
 
-    public void setAspectRatio(float aspectRatio) {
+    public void setAspectRatio(String aspectRatio) {
         this.aspectRatio = aspectRatio;
     }
 
