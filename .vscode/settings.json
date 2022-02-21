@@ -1,3 +1,7 @@
 {
-    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -javaagent:\"/home/teo/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\""
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -javaagent:\"/home/teo/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "opencsv-3.8.jar"
+    ]
 }

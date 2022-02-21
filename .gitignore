@@ -1,3 +1,4 @@
 *.class
 *.swap
 *.jar
+/.vscode/*.json
